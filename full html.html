@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Video Player with Gestures</title>
+  <style>
+    body, html {
+      margin: 0; padding: 0; height: 100%;
+      background: #000; display: flex; flex-direction: column;
+    }
+    #video-container {
+      position: relative;
+      flex: 1;
+      width: 100%;
+    }
+    video {
+      width: 100%; height: 100%;
+      background: #000;
+    }
+    #comment-section {
+      display: none;
+      background: #222;
+      color: #fff;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="video-container">
+  <video id="myVideo" src="sample.mp4" controls></video>
+</div>
+
+<div id="comment-section">
+  <h3>Comments</h3>
+  <p>This is a sample comment section.</p>
+</div>
+
+<script src="gesture-controls.js"></script>
+</body>
+</html>
