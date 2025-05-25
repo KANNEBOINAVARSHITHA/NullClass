@@ -1,0 +1,32 @@
+<button onclick="upgradePlan('Gold', 'user@example.com')">Upgrade to Gold</button>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+function upgradePlan(plan, email) {
+    const planPrices = {
+        "Bronze": 1000,  // 10 rs
+        "Silver": 5000,  // 50 rs
+        "Gold": 10000    // 100 rs
+    };
+
+    var options = {
+        "key": "rzp_test_yourkey", // your test key
+        "amount": planPrices[plan], 
+        "currency": "INR",
+        "name": "YouTube Clone",
+        "description": ${plan} Plan Upgrade,
+        "handler": function (response) {
+            fetch('/upgrade_plan', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ email, plan })
+            })
+            .then(res => res.json())
+            .then(data => alert(data.message));
+        }
+    };
+
+    var rzp = new Razorpay(options);
+    rzp.open();
+}
+</script>
